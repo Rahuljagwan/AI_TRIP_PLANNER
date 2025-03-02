@@ -58,7 +58,7 @@ end_location = st.text_input("📍 Destination:", placeholder="Enter your destin
 weather_preference = st.selectbox("🌤️ Preferred Weather:", ["Hot", "Cold", "Moderate"])
 
 def fetch_weather(city):
-    api_key = "e4697b05e982c2a63e1cee7a29f39db8"
+    api_key = "your_openweather_api_key"
     weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
     
     try:
@@ -93,7 +93,7 @@ if st.button("Generate Travel Plan"):
                 Mode of Transport | Estimated Fare | Duration | Additional Info
                 """
             )
-            travel_assistant = ChatGoogleGenerativeAI(api_key="AIzaSyDRVJJCVU_I5Oe4IxOE5ZFZiitBUQnZg0k", model="gemini-2.0-flash-exp")
+            travel_assistant = ChatGoogleGenerativeAI(api_key="your_gemini_api_key", model="gemini-2.0-flash-exp")
             output_parser = StrOutputParser()
             travel_chain = travel_prompt | travel_assistant | output_parser
             travel_response = travel_chain.invoke({"start_location": start_location, "end_location": end_location})
